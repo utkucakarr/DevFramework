@@ -11,7 +11,7 @@ namespace DevFramework.Northwind.DataAccess.Concerete.NHibernate.Mappings
             Table("Products");
             LazyLoad();
             Id(x => x.CategoryID).Column("CategoryID");
-            Map(x => x.CategoryID).Column("CategoryID");
+
             Map(x => x.CategoryName).Column("CategoryName");
         }
     }

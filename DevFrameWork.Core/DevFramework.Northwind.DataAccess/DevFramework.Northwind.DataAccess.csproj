@@ -72,12 +72,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IProductDal.cs" />
+    <Compile Include="Concerete\EntityFramework\EfCategoryDal.cs" />
     <Compile Include="Concerete\EntityFramework\EfProductDal.cs" />
+    <Compile Include="Concerete\EntityFramework\Mapping\CategoryMap.cs" />
     <Compile Include="Concerete\EntityFramework\Mapping\ProductMap.cs" />
     <Compile Include="Concerete\EntityFramework\NorthwindContext.cs" />
     <Compile Include="Concerete\NHibernate\Helper\SqlServerHelper.cs" />
+    <Compile Include="Concerete\NHibernate\Mappings\CategoryMap.cs" />
     <Compile Include="Concerete\NHibernate\Mappings\ProductMap.cs" />
+    <Compile Include="Concerete\NHibernate\NhCategoryDal.cs" />
     <Compile Include="Concerete\NHibernate\NhProductDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

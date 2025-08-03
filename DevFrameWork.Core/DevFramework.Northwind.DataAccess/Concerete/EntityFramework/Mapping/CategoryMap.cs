@@ -1,5 +1,4 @@
 ﻿using DevFramework.Northwind.Entities.Concerete;
-using FluentNHibernate.Conventions.Helpers;
 using System.Data.Entity.ModelConfiguration;
 
 namespace DevFramework.Northwind.DataAccess.Concerete.EntityFramework.Mapping
