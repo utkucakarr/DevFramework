@@ -77,6 +77,8 @@
     <Compile Include="Concerete\EntityFramework\Mapping\ProductMap.cs" />
     <Compile Include="Concerete\EntityFramework\NorthwindContext.cs" />
     <Compile Include="Concerete\NHibernate\Helper\SqlServerHelper.cs" />
+    <Compile Include="Concerete\NHibernate\Mappings\ProductMap.cs" />
+    <Compile Include="Concerete\NHibernate\NhProductDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +95,7 @@
       <Name>DevFramework.Northwind.Entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

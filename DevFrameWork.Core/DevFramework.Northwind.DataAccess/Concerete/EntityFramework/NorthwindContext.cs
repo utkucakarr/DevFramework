@@ -12,6 +12,7 @@ namespace DevFramework.Northwind.DataAccess.Concerete.EntityFramework
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
