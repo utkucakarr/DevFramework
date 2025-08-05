@@ -17,7 +17,7 @@ namespace DevFramework.Northwind.Business.ValidationRules.FluentValidation
             RuleFor(p => p.QuantityPerUnit).NotEmpty();
 
             // Olmayan bir kural eklemek istediğimizde
-            RuleFor(p => p.ProductName).Must(StartWithA).WithMessage("Ürünler A harfi ile başlamalı");
+            //RuleFor(p => p.ProductName).Must(StartWithA).WithMessage("Ürünler A harfi ile başlamalı");
             // Özel mesaj göndermek için WithMessage methodun'dan faydalanırız.
 
         }

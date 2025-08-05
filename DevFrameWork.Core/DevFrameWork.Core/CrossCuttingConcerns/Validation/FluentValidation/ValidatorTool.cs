@@ -6,11 +6,10 @@ namespace DevFrameWork.Core.CrossCuttingConcerns.Validation.FluentValidation
     {
         // Entitylerimiz için object verdik. Örnek -> Product
         // Buradaki IValidator ProductValidator oluyor.
-        public static void Validate(IValidator validator, object entity)
+        public static void FluentValidate(IValidator validator, object entity)
         {
-            var context = new ValidationContext<object>(entity);
-            var result = validator.Validate(context);
-            if (!result.IsValid)
+            var result = validator.Validate(entity);
+            if (result.Errors.Count > 0)
             {
                 throw new ValidationException(result.Errors);
             }
