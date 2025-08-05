@@ -95,12 +95,12 @@
   <ItemGroup>
     <Compile Include="Abstract\IProductService.cs" />
     <Compile Include="Concerete\ProductManager.cs" />
+    <Compile Include="DependencyResolvers\Ninject\BusinessModule.cs" />
+    <Compile Include="DependencyResolvers\Ninject\ValidationModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationRules\FluentValidation\ProductValidator.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DependencyResolvers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DevFrameWork.Core\DevFrameWork.Core.csproj">
       <Project>{70374530-7a39-4e19-a41d-d5089035b04e}</Project>
