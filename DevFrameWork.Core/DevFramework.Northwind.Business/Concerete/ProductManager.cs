@@ -42,22 +42,11 @@ namespace DevFramework.Northwind.Business.Concerete
             return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductID == id));
         }
 
-        public IResult TransactionalOperation(Product product1, Product product2)
+        public void TransactionalOperation(Product product1, Product product2)
         {
-            using (TransactionScope scope = new TransactionScope())
-            {
-                try
-                {
-                    _productDal.Add(product1);
-                    // Business Codes
-                    _productDal.Update(product2);
-                    scope.Complete();
-                }
-                catch
-                {
-                    scope.Dispose();
-                }
-            }
+            _productDal.Add(product1);
+            // Business Codes
+            _productDal.Update(product2);
         }
 
         [ValidationAspect(typeof(ProductValidator))]

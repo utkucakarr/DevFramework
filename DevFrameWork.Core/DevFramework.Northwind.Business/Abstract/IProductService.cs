@@ -16,6 +16,6 @@ namespace DevFramework.Northwind.Business.Abstract
 
         IResult Delete(Product product);
 
-        IResult TransactionalOperation(Product product1, Product product2);
+        void TransactionalOperation(Product product1, Product product2);
     }
 }
