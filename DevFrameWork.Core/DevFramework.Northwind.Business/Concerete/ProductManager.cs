@@ -16,7 +16,7 @@ namespace DevFramework.Northwind.Business.Concerete
             _productDal = productDal;
         }
 
-        //[FluentValidationAspect(typeof(ProductValidator))]
+        [FluentValidationAspect(typeof(ProductValidator))]
         public Product Add(Product product)
         {
             return _productDal.Add(product);
