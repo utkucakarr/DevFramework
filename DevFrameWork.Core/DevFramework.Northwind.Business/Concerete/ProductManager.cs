@@ -2,7 +2,8 @@
 using DevFramework.Northwind.Business.ValidationRules.FluentValidation;
 using DevFramework.Northwind.DataAccess.Abstract;
 using DevFramework.Northwind.Entities.Concerete;
-using DevFrameWork.Core.Aspects.Postsharp;
+using DevFrameWork.Core.Aspects.Postsharp.TransactionAspects;
+using DevFrameWork.Core.Aspects.Postsharp.ValidationAspects;
 using System.Collections.Generic;
 
 namespace DevFramework.Northwind.Business.Concerete
@@ -37,9 +38,12 @@ namespace DevFramework.Northwind.Business.Concerete
             return _productDal.Get(p => p.ProductID == id);
         }
 
+        [TransactionScopeAspect]
         public void TransactionalOperation(Product product1, Product product2)
         {
-            throw new System.NotImplementedException();
+            _productDal.Add(product1);
+            //Business code
+            _productDal.Update(product2);
         }
 
         [FluentValidationAspect(typeof(ProductValidator))]
