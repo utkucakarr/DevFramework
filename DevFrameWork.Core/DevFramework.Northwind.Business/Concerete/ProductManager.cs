@@ -2,8 +2,12 @@
 using DevFramework.Northwind.Business.ValidationRules.FluentValidation;
 using DevFramework.Northwind.DataAccess.Abstract;
 using DevFramework.Northwind.Entities.Concerete;
+using DevFrameWork.Core.Aspects.Postsharp.CacheAspects;
+using DevFrameWork.Core.Aspects.Postsharp.LogAspects;
 using DevFrameWork.Core.Aspects.Postsharp.TransactionAspects;
 using DevFrameWork.Core.Aspects.Postsharp.ValidationAspects;
+using DevFrameWork.Core.CrossCuttingConcerns.Caching.Microsoft;
+using DevFrameWork.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using System.Collections.Generic;
 
 namespace DevFramework.Northwind.Business.Concerete
@@ -18,6 +22,7 @@ namespace DevFramework.Northwind.Business.Concerete
         }
 
         [FluentValidationAspect(typeof(ProductValidator))]
+        [CacheRemoveAspect(typeof(MemoryCacheManager))] // cache clear
         public Product Add(Product product)
         {
             return _productDal.Add(product);
@@ -28,6 +33,8 @@ namespace DevFramework.Northwind.Business.Concerete
             _productDal.Delete(product);
         }
 
+        [CacheAspect(typeof(MemoryCacheManager))]
+        [LogAspect(typeof(DatabaseLogger))]
         public List<Product> GetAll()
         {
             return _productDal.GetList();

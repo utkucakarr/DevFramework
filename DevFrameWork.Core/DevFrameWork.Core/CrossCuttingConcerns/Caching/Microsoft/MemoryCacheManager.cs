@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Runtime.Caching;
 using System.Text.RegularExpressions;
 
@@ -25,7 +26,10 @@ namespace DevFrameWork.Core.CrossCuttingConcerns.Caching.Microsoft
 
         public void Clear()
         {
-            throw new System.NotImplementedException();
+            foreach (var item in Cache)
+            {
+                Remove(item.Key);
+            }
         }
 
         public T Get<T>(string key)
@@ -46,6 +50,12 @@ namespace DevFrameWork.Core.CrossCuttingConcerns.Caching.Microsoft
         public void RemoveByPattern(string pattern)
         {
             var regex = new Regex(pattern, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            var keysToRemove = Cache.Where(d => regex.IsMatch(d.Key)).Select(d => d.Key).ToList();
+
+            foreach (var key in keysToRemove)
+            {
+                Remove(key);
+            }
         }
     }
 }
