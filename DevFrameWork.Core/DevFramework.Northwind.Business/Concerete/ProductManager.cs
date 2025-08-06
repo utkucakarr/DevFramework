@@ -23,6 +23,7 @@ namespace DevFramework.Northwind.Business.Concerete
 
         [FluentValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect(typeof(MemoryCacheManager))] // cache clear
+        [LogAspect(typeof(FileLogger))]
         public Product Add(Product product)
         {
             return _productDal.Add(product);
