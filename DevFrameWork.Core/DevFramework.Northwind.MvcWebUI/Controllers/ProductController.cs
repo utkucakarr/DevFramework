@@ -29,9 +29,9 @@ namespace DevFramework.Northwind.MvcWebUI.Controllers
             _productService.Add(new Product
             {
                 CategoryID = 1,
-                ProductName = "Telefon",
+                ProductName = "Laptop2",
                 QuantityPerUnit = "1",
-                UnitPrice = 35
+                UnitPrice = 30
             });
             return "Added";
         }
@@ -43,14 +43,14 @@ namespace DevFramework.Northwind.MvcWebUI.Controllers
                 CategoryID = 1,
                 ProductName = "Telefon1",
                 QuantityPerUnit = "1",
-                UnitPrice = 40
+                UnitPrice = 5
             }, new Product
             {
                 ProductID = 11078,
                 CategoryID = 1,
-                ProductName = "Laptop",
+                ProductName = "Laptop1",
                 QuantityPerUnit = "1",
-                UnitPrice = 3000
+                UnitPrice = 3500
             });
             return "Done";
         }
