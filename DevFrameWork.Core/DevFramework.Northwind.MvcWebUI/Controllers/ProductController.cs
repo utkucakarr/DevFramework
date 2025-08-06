@@ -20,7 +20,7 @@ namespace DevFramework.Northwind.MvcWebUI.Controllers
             {
                 Products = _productService.GetAll()
             };
-            return View();
+            return View(model);
         }
     }
 }
