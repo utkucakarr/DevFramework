@@ -3,10 +3,13 @@ using DevFramework.Northwind.Business.ValidationRules.FluentValidation;
 using DevFramework.Northwind.DataAccess.Abstract;
 using DevFramework.Northwind.Entities.Concerete;
 using DevFrameWork.Core.Aspects.Postsharp.CacheAspects;
+using DevFrameWork.Core.Aspects.Postsharp.PerformanceAspects;
 using DevFrameWork.Core.Aspects.Postsharp.TransactionAspects;
 using DevFrameWork.Core.Aspects.Postsharp.ValidationAspects;
 using DevFrameWork.Core.CrossCuttingConcerns.Caching.Microsoft;
+using PostSharp.Aspects.Dependencies;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace DevFramework.Northwind.Business.Concerete.Managers
 {
@@ -20,7 +23,7 @@ namespace DevFramework.Northwind.Business.Concerete.Managers
         }
 
         [FluentValidationAspect(typeof(ProductValidator))]
-        /*[CacheRemoveAspect(typeof(MemoryCacheManager))]*/ // cache clear
+        [CacheRemoveAspect(typeof(MemoryCacheManager))] // cache clear
         public Product Add(Product product)
         {
             return _productDal.Add(product);
@@ -32,8 +35,11 @@ namespace DevFramework.Northwind.Business.Concerete.Managers
         }
 
         [CacheAspect(typeof(MemoryCacheManager))]
+        [PerformanceCounterAspect(2)] // Performans ölçümü 2 saniye
+        [SecuredOperation(Roles="Admin")]
         public List<Product> GetAll()
         {
+            Thread.Sleep(3000);
             return _productDal.GetList();
         }
 

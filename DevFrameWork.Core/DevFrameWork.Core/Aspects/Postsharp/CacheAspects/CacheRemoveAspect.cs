@@ -20,7 +20,7 @@ namespace DevFrameWork.Core.Aspects.Postsharp.CacheAspects
         public CacheRemoveAspect(string pattern, Type cacheType)
         {
             _pattern = pattern;
-            _cacheType= cacheType;
+            _cacheType = cacheType;
         }
 
         public override void RuntimeInitialize(MethodBase method)
@@ -39,8 +39,8 @@ namespace DevFrameWork.Core.Aspects.Postsharp.CacheAspects
         public override void OnSuccess(MethodExecutionArgs args)
         {
             _cacheManager.RemoveByPattern(string.IsNullOrEmpty(_pattern)
-                ? string.Format("{0}", "{1}",args.Method.ReflectedType.Namespace, args.Method.ReflectedType.Name)
-                :_pattern);
+                ? string.Format("{0}.{1}.*", args.Method.ReflectedType.Namespace, args.Method.ReflectedType.Name)
+                : _pattern);
         }
     }
 }
