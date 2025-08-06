@@ -1,4 +1,4 @@
-﻿using DevFramework.Northwind.Business.Concerete;
+﻿using DevFramework.Northwind.Business.Concerete.Managers;
 using DevFramework.Northwind.DataAccess.Abstract;
 using DevFramework.Northwind.Entities.Concerete;
 using FluentValidation;
