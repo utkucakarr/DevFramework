@@ -35,6 +35,7 @@ namespace DevFramework.Northwind.Business.Concerete
 
         [CacheAspect(typeof(MemoryCacheManager))]
         [LogAspect(typeof(DatabaseLogger))]
+        [LogAspect(typeof(FileLogger))]
         public List<Product> GetAll()
         {
             return _productDal.GetList();
