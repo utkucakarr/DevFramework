@@ -35,5 +35,24 @@ namespace DevFramework.Northwind.MvcWebUI.Controllers
             });
             return "Added";
         }
+
+        public string AddUpdate()
+        {
+            _productService.TransactionalOperation(new Product
+            {
+                CategoryID = 1,
+                ProductName = "Telefon1",
+                QuantityPerUnit = "1",
+                UnitPrice = 40
+            }, new Product
+            {
+                ProductID = 11078,
+                CategoryID = 1,
+                ProductName = "Laptop",
+                QuantityPerUnit = "1",
+                UnitPrice = 3000
+            });
+            return "Done";
+        }
     }
 }
