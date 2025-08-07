@@ -2,12 +2,12 @@
 using DevFramework.Northwind.Business.ValidationRules.FluentValidation;
 using DevFramework.Northwind.DataAccess.Abstract;
 using DevFramework.Northwind.Entities.Concerete;
+using DevFrameWork.Core.Aspects.Postsharp.AuthorizationAspects;
 using DevFrameWork.Core.Aspects.Postsharp.CacheAspects;
 using DevFrameWork.Core.Aspects.Postsharp.PerformanceAspects;
 using DevFrameWork.Core.Aspects.Postsharp.TransactionAspects;
 using DevFrameWork.Core.Aspects.Postsharp.ValidationAspects;
 using DevFrameWork.Core.CrossCuttingConcerns.Caching.Microsoft;
-using PostSharp.Aspects.Dependencies;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -36,7 +36,7 @@ namespace DevFramework.Northwind.Business.Concerete.Managers
 
         [CacheAspect(typeof(MemoryCacheManager))]
         [PerformanceCounterAspect(2)] // Performans ölçümü 2 saniye
-        [SecuredOperation(Roles="Admin")]
+        [SecuredOperation(Roles = "Admin, Editor")]
         public List<Product> GetAll()
         {
             Thread.Sleep(3000);
