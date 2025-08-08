@@ -9,6 +9,7 @@ using DevFrameWork.Core.Aspects.Postsharp.TransactionAspects;
 using DevFrameWork.Core.Aspects.Postsharp.ValidationAspects;
 using DevFrameWork.Core.CrossCuttingConcerns.Caching.Microsoft;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace DevFramework.Northwind.Business.Concerete.Managers
@@ -36,11 +37,19 @@ namespace DevFramework.Northwind.Business.Concerete.Managers
 
         [CacheAspect(typeof(MemoryCacheManager))]
         [PerformanceCounterAspect(2)] // Performans ölçümü 2 saniye
-        [SecuredOperation(Roles = "Admin, Editor, Student")]
+        //[SecuredOperation(Roles = "Admin, Editor, Student")]
         public List<Product> GetAll()
         {
-            Thread.Sleep(3000);
-            return _productDal.GetList();
+            //Thread.Sleep(3000);
+            //Manual mapping
+            return _productDal.GetList().Select(p=> new Product
+            {
+                ProductID = p.ProductID,
+                CategoryID = p.CategoryID,
+                ProductName = p.ProductName,
+                QuantityPerUnit = p.QuantityPerUnit,
+                UnitPrice = p.UnitPrice
+            }).ToList();
         }
 
         public Product GetById(int id)

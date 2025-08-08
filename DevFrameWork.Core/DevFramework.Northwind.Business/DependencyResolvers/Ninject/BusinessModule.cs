@@ -2,6 +2,7 @@
 using DevFramework.Northwind.Business.Concerete.Managers;
 using DevFramework.Northwind.DataAccess.Abstract;
 using DevFramework.Northwind.DataAccess.Concerete.EntityFramework;
+using DevFramework.Northwind.DataAccess.Concerete.NHibernate;
 using DevFramework.Northwind.DataAccess.Concerete.NHibernate.Helper;
 using DevFrameWork.Core.DataAccess;
 using DevFrameWork.Core.DataAccess.EntityFramework;
