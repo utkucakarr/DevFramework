@@ -7,7 +7,7 @@ namespace DevFramework.Northwind.DataAccess.Concerete.EntityFramework.Mapping
     {
         public CategoryMap()
         {
-            ToTable(@"Category", @"dbo");
+            ToTable(@"Categories", @"dbo");
             HasKey(x => x.CategoryID);
 
             Property(x => x.CategoryID).HasColumnName("CategoryID");

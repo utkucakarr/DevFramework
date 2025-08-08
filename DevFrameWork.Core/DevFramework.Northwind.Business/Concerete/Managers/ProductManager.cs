@@ -36,7 +36,7 @@ namespace DevFramework.Northwind.Business.Concerete.Managers
 
         [CacheAspect(typeof(MemoryCacheManager))]
         [PerformanceCounterAspect(2)] // Performans ölçümü 2 saniye
-        [SecuredOperation(Roles = "Admin, Editor")]
+        [SecuredOperation(Roles = "Admin, Editor, Student")]
         public List<Product> GetAll()
         {
             Thread.Sleep(3000);

@@ -7,7 +7,7 @@ namespace DevFrameWork.Core.CrossCuttingConcerns.Security.Web
 {
     public class AuthenticationHelper
     {
-        public static void CreateAuthCookie(int id, string userName, string email, DateTime expiration, string[] roles,
+        public static void CreateAuthCookie(Guid id, string userName, string email, DateTime expiration, string[] roles,
             bool rememberMe, string firstName, string lastName)
         {
             var authTicket = new FormsAuthenticationTicket(1,userName,DateTime.Now,expiration,rememberMe,
@@ -17,7 +17,7 @@ namespace DevFrameWork.Core.CrossCuttingConcerns.Security.Web
             HttpContext.Current.Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
         }
 
-        private static string CreateAuthTags(string email, string[] roles, string firstName, string lastName, int id)
+        private static string CreateAuthTags(string email, string[] roles, string firstName, string lastName, Guid id)
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.Append(email);

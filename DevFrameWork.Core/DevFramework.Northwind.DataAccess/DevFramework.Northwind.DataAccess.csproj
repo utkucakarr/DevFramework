@@ -72,12 +72,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\EfUserRoleDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IProductDal.cs" />
+    <Compile Include="Abstract\IRoleDal.cs" />
+    <Compile Include="Abstract\IUserDal.cs" />
+    <Compile Include="Abstract\IUserRoleDal.cs" />
     <Compile Include="Concerete\EntityFramework\EfCategoryDal.cs" />
     <Compile Include="Concerete\EntityFramework\EfProductDal.cs" />
+    <Compile Include="Concerete\EntityFramework\EfRoleDal.cs" />
+    <Compile Include="Concerete\EntityFramework\EfUserDal.cs" />
     <Compile Include="Concerete\EntityFramework\Mapping\CategoryMap.cs" />
     <Compile Include="Concerete\EntityFramework\Mapping\ProductMap.cs" />
+    <Compile Include="Concerete\EntityFramework\Mapping\RoleMap.cs" />
+    <Compile Include="Concerete\EntityFramework\Mapping\UserMap.cs" />
+    <Compile Include="Concerete\EntityFramework\Mapping\UserRoleMap.cs" />
     <Compile Include="Concerete\EntityFramework\NorthwindContext.cs" />
     <Compile Include="Concerete\NHibernate\Helper\SqlServerHelper.cs" />
     <Compile Include="Concerete\NHibernate\Mappings\CategoryMap.cs" />
