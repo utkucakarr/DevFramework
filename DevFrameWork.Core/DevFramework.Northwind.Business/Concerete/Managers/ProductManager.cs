@@ -1,4 +1,5 @@
-﻿using DevFramework.Northwind.Business.Abstract;
+﻿using AutoMapper;
+using DevFramework.Northwind.Business.Abstract;
 using DevFramework.Northwind.Business.ValidationRules.FluentValidation;
 using DevFramework.Northwind.DataAccess.Abstract;
 using DevFramework.Northwind.Entities.Concerete;
@@ -8,6 +9,7 @@ using DevFrameWork.Core.Aspects.Postsharp.PerformanceAspects;
 using DevFrameWork.Core.Aspects.Postsharp.TransactionAspects;
 using DevFrameWork.Core.Aspects.Postsharp.ValidationAspects;
 using DevFrameWork.Core.CrossCuttingConcerns.Caching.Microsoft;
+using DevFrameWork.Core.Utilities.Mappings;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -42,14 +44,18 @@ namespace DevFramework.Northwind.Business.Concerete.Managers
         {
             //Thread.Sleep(3000);
             //Manual mapping
-            return _productDal.GetList().Select(p=> new Product
-            {
-                ProductID = p.ProductID,
-                CategoryID = p.CategoryID,
-                ProductName = p.ProductName,
-                QuantityPerUnit = p.QuantityPerUnit,
-                UnitPrice = p.UnitPrice
-            }).ToList();
+            //return _productDal.GetList().Select(p => new Product
+            //{
+            //    ProductID = p.ProductID,
+            //    CategoryID = p.CategoryID,
+            //    ProductName = p.ProductName,
+            //    QuantityPerUnit = p.QuantityPerUnit,
+            //    UnitPrice = p.UnitPrice
+            //}).ToList();
+
+            // AutoMapper
+            var products = AutoMapperHelper.MapsToSameTypeList(_productDal.GetList());
+            return products;
         }
 
         public Product GetById(int id)
