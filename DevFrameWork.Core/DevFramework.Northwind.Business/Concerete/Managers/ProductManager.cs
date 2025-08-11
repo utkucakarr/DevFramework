@@ -19,10 +19,12 @@ namespace DevFramework.Northwind.Business.Concerete.Managers
     public class ProductManager : IProductService
     {
         private IProductDal _productDal;
+        private readonly IMapper _mapper;
 
-        public ProductManager(IProductDal productDal)
+        public ProductManager(IProductDal productDal, IMapper mapper)
         {
             _productDal = productDal;
+            _mapper = mapper;
         }
 
         [FluentValidationAspect(typeof(ProductValidator))]
@@ -54,7 +56,7 @@ namespace DevFramework.Northwind.Business.Concerete.Managers
             //}).ToList();
 
             // AutoMapper
-            var products = AutoMapperHelper.MapsToSameTypeList(_productDal.GetList());
+            var products = _mapper.Map<List<Product>>(_productDal.GetList());
             return products;
         }
 
